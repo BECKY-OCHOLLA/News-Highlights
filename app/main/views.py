@@ -20,7 +20,7 @@ def index():
     health_sources = get_sources('health')
     science_sources = get_sources('science')
 
-    # return redirect(url_for('news',id = news.id ))
+    return redirect(url_for('news',id = news.id ))
 
     title = 'News Source '
     return render_template('index.html',title=title,business = business_sources,health=health_sources,science=science_sources,sports = sports_sources, technology = technology_sources,entertainment = entertainment_sources ,general=general_sources)
