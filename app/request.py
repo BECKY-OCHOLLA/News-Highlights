@@ -1,11 +1,12 @@
+from unicodedata import category
 import urllib.request,json
 from .models import Source,Article
 import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
-url  = urllib.request.urlopen("http://google.com")
 
-print(url.read())
+
+# print(url.read())
 
 
 #getting api key
@@ -21,11 +22,11 @@ def configure_request(app):
     base_url=app.config['NEWS_API_BASE_URL']
     article_url=app.config['ARTICLE_NEWS_URL']
 
-def get_sources():
+def get_sources(category):
     '''
     Function that gets json response to our url request
     '''
-    get_sources_url = base_url.format(api_key)
+    get_sources_url = base_url.format(category,api_key)
 
     with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data = url.read()

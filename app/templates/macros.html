@@ -1,12 +1,12 @@
 {% macro displayNewsList(news_list) %}
 
-    {% for news in news_list %}
+    {% for source in source_list %}
     <div class="row">
      <ul>
-       <li style="font-size:115%;"><a href="/news/{{news.id}}">{{news.name}}</a></li>
+       <li style="font-size:115%;"><a href="/news/{{news.id}}">{{source.name}}</a></li>
      </ul>
     </div>
-        <!-- <li>{{news.name}}</li> -->
+        
     {% endfor %}
 
 {% endmacro %}
