@@ -10,7 +10,7 @@ print(url.read())
 
 
 #getting api key
- api_key = None
+api_key = None
 
 #getting news base url
 base_url = None
