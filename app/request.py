@@ -4,9 +4,11 @@ from .models import Source,Article
 import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
+url  = urllib.request.urlopen("http://google.com")
 
 
-# print(url.read())
+
+print(url.read())
 
 
 #getting api key
@@ -109,3 +111,5 @@ def process_articles(articles_list):
             article_results.append(article_object)
 
     return article_results
+
+

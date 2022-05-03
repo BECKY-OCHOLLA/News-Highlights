@@ -35,3 +35,8 @@ def news(id):
     articles = get_articles(id)
     title = 'News higlights'
     return render_template('news.html', articles=articles,title=title)
+
+
+
+  
+
