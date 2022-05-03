@@ -4,11 +4,11 @@ from .models import Source,Article
 import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
-url  = urllib.request.urlopen("http://google.com")
+# url  = urllib.request.urlopen('id')
 
 
 
-print(url.read())
+# print(url.read())
 
 
 #getting api key
@@ -28,20 +28,22 @@ def get_sources(category):
     '''
     Function that gets json response to our url request
     '''
-    get_sources_url = base_url.format(category,api_key)
+    # get_sources_url = base_url.format(category,api_key)
+    get_sources_url='https://newsapi.org/v1/sources?language=en&category={}'.format(category)
 
     with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data = url.read()
         get_sources_response = json.loads(get_sources_data)
 
-        sources_results = None
+        # sources_results = None
 
-        if get_sources_response['sources']:
-            sources_results_list = get_sources_response['sources']
-            sources_results = process_sources(sources_results_list)
+        # if get_sources_response['status']== 'ok':
+        sources_results_list = get_sources_response['sources']
+        sources_results = process_sources(sources_results_list)
 
             
     return sources_results
+
 
 def process_sources(sources_list):
     '''
@@ -61,17 +63,19 @@ def process_sources(sources_list):
         language = sources_item.get('language')
         country = sources_item.get('country')
 
-        if id:
-            sources_object = Source(id,name,description,url,category,language,country)
+        
+        sources_object = Source(id,name,description,url,category,language,country)
 
-            sources_results.append(sources_object)
+        sources_results.append(sources_object)
     return sources_results
 
 def get_articles(id):
     '''
     Function that gets the json response to url request
     '''
-    get_article_news_url = article_url.format(id,api_key)
+    # get_article_news_url = article_url.format(id,api_key)
+    get_article_news_url='https://newsapi.org/v2/top-headlines?sources={}&apiKey=bcff76712dd94a3fb38a235f73f5bc2d'.format(id)
+
     with urllib.request.urlopen(get_article_news_url) as url:
         get_articles_data = url.read()
         get_articles_response = json.loads(get_articles_data)
@@ -111,5 +115,4 @@ def process_articles(articles_list):
             article_results.append(article_object)
 
     return article_results
-
 

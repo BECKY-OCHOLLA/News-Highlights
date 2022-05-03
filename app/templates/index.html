@@ -1,35 +1,109 @@
 
 {% extends 'base.html'%} 
-{% import 'macros.html' as macro %}  -->
+{% import 'macros.html' as macro %}   
 <!-- Style block -->
 {% block styles %}
 {{super()}}
-<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> 
 {% endblock %}  
 <!-- Content block--> 
-{% block content %}
+{% block content %} 
+<div>
+  {{ macro.displayNewsList(general)}}
+</div>
+
 <div class="container">
-  <div style="background-color:lightblue"class="panel panel-primary">
-    <div class="panel-heading">General</div>
-    <div class="panel-body">
-      <ul>
-        <li><a href="#general">General</a></li>
-      </ul>
+  <div class="row">
+    
+    <div  class="col-md-4">
+      <h2>General</h2>
+      
+      {% for source in general %}
+      <p style="font-size:115%;"><a href="/news/{{source.id}}">{{source.name}}</a></p>
+          
+      {% endfor %}
+        
+        
+      <p>{{ macro.displayNewsList(general)}}</p>
+       <hr>
+      
+    </div>
+    <div class="col-md-4">
+      <h2>Sports</h2>
+      
+      {% for source in sports %}
+      <p style="font-size:115%;"><a href="/news/{{source.id}}">{{source.name}}</a></p>
+          
+      {% endfor %}
+        
+        
+      <p>{{ macro.displayNewsList(general)}}</p>
+       <hr>
+
+    </div>
+    <div class="col-md-4">
+      <h2>Entertainment</h2>
+      
+      {% for source in entertainment %}
+      <p style="font-size:115%;"><a href="/news/{{source.id}}">{{source.name}}</a></p>
+          
+      {% endfor %}
+        
+        
+      <p>{{ macro.displayNewsList(general)}}</p>
+       <hr>
+    </div>
+
+  </div>
+  <div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+  </div>
+
+</div>
+<div class="container">
+  <div class='row'>
+    <h2>General<h2>
+    
+      <div class="col md-4">
+        
+           {% for source in general %}
+          <p style="font-size:115%;"><a href="/news/{{source.id}}">{{source.name}}</a></p>
+        
+        {% endfor %}
+      </div>
       
       <p>{{ macro.displayNewsList(general)}}</p>
       <hr>
-    </div>
+    
   </div>
   <div style="background-color:orange"class="panel panel-success">
-    <div class="panel-heading">Sports</div>
-    <div class="panel-body">
-      <ul><p>{{ macro.displayNewsList(sports)}}</p><ul>
+    <h2>Sports</h2>
+    <div class="row">
+      <div class="col md-4">
+        <ul>
+           {% for source in sports %}
+          <li style="font-size:115%;"><a href="/news/{{source.id}}">{{source.name}}</a></li>
+        </ul>
+        {% endfor %}
+       </div>
+      <p>{{ macro.displayNewsList(sports)}}</p>
       <hr>
     </div>
   </div>
-  <div style="background-color:#ddd" class="panel panel-info">
-    <div class="panel-heading">Entertainment</div>
-    <div class="panel-body">
+  <div style="background-color:rgb(61, 209, 202)" class="panel panel-info">
+    <h1>Entertainment</h1>
+    <div class="row">
+
+      <div class="row">
+        <ul>
+           {% for source in entertainment %}
+          <li style="font-size:115%;"><a href="/news/{{source.id}}">{{source.name}}</a></li>
+        </ul>
+        {% endfor %}
+       </div>
       <p>{{ macro.displayNewsList(entertainment)}}</p>
       <hr>
     </div>
@@ -37,31 +111,49 @@
   <div style="background-color:linen"class="panel panel-warning">
     <div class="panel-heading">Business</div>
     <div class="panel-body">
+
+      <div class="row">
+        <ul>
+           {% for source in business %}
+          <li style="font-size:115%;"><a href="/news/{{source.id}}">{{source.name}}</a></li>
+        </ul>
+        {% endfor %}
+       </div>
       <p>{{ macro.displayNewsList(business)}}</p>
       <hr>
     </div>
   </div>
-  <div style="background-color:#ccc" class="panel panel-danger">
+  <div style="background-color:rgba(204, 204, 204, 0.877)" class="panel panel-danger">
     <div class="panel-heading">Technology</div>
     <div class="panel-body">
+      <div class="row">
+        <ul>
+           {% for source in technology %}
+          <li style="font-size:115%;"><a href="/news/{{source.id}}">{{source.name}}</a></li>
+        </ul>
+        {% endfor %}
+       </div>
       <p>{{ macro.displayNewsList(technology)}}</p>
       <hr>
     </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">Health</div>
-    <div class="panel-body">
-      <p>{{ macro.displayNewsList(health)}}</p>
-      <hr>
-    </div>
-  </div>
-  <div style="color:green; background-color:Yellow;"class="panel panel-success">
+  
+  <div style="color:green; background-color:rgb(0, 255, 242);"class="panel panel-success">
     <div class="panel-heading">Science</div>
     <div class="panel-body">
+
+      <div class="row">
+        <ul>
+           {% for source in science %}
+          <li style="font-size:115%;"><a href="/news/{{source.id}}">{{source.name}}</a></li>
+        </ul>
+        {% endfor %}
+       </div>
       <p>{{ macro.displayNewsList(science)}}</p>
       <hr>
     </div>
   </div>
 </div>
 
-{% endblock %}  -->
+{% endblock %}   
+

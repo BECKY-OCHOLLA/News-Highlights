@@ -1,13 +1,16 @@
 {% macro displayNewsList(news_list) %}
 
-    {% for source in source_list %}
+   
+
     <div class="row">
      <ul>
-       <li style="font-size:115%;"><a href="/news/{{news.id}}">{{source.name}}</a></li>
+        {% for source in source_list %}
+       <li style="font-size:115%;"><a href="/news/{{source.id}}">{{source.name}}</a></li>
      </ul>
+     {% endfor %}
     </div>
         
-    {% endfor %}
+  
 
 {% endmacro %}
 
@@ -25,8 +28,9 @@
                     <p><b><i>Published at: </i></b> {{news.publishedAt}}</p>
             </div>
             <div class="card-footer">
-                <b><i>Get More@: </i></b><a href="{{news.url}}">{{news.name}}</a>
+                <b><i>Get More@: </i></b><a href="{{news.url}}"target='blank'>{{news.name}} </a>
             </div>
     </div>
 {% endfor %}
-{% endmacro %}
+{% endmacro %} -->
+

@@ -14,6 +14,8 @@ def index():
 
     # get general sources
     general_sources = get_sources('general')
+
+
     sports_sources = get_sources('sports')
     technology_sources = get_sources('technology')
     entertainment_sources = get_sources('entertainment')
@@ -36,7 +38,4 @@ def news(id):
     title = 'News higlights'
     return render_template('news.html', articles=articles,title=title)
 
-
-
-  
 
